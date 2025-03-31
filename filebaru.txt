@@ -29,3 +29,5 @@ gh repo create my-repo --public --source=. --remote=origin
 6. --remote=origin: //Nah, ini bagian yang kamu tanyain. Flag ini nyuruh gh buat bikin remote connection ke repo GitHub yang baru dibuat, dan kasih nama remote-nya origin.
 //  Apa itu remote? Remote adalah link ke repo di server (GitHub). Biasanya nama default-nya origin, kayak kalau kamu manual bikin git remote add origin <url>.
 // Jadi, --remote=origin artinya: "Hubungkan repo lokal ini ke GitHub, dan panggil remote-nya origin". Kalau enggak pake flag ini, gh enggak otomatis set remote, dan kamu harus tambah manual pake git remote add.
+
+// buat branch lama setelah ada commit baru
