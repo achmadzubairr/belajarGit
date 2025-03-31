@@ -13,8 +13,11 @@ Hello Word;
 5. type namafile.txt // melihat isi file
 6. git add namafile.txt // tambah file ke staging
 7. git commit -m "pesan anda" // commit perubahan. -m -> message
-8. git push origin main // push file ke github
+8. git checkout -b namabranchbaru // buat dan pindah ke branch baru
+9. git push origin main // push file ke GitHub (main artinya branch baru anda bernama main)
 
+gh repo edit usernamekamu/namarepogithub --visibility private --accept-visibility-change-consequences // ubah repo jadi private/public
+gh repo view usernamekamu/namarepogithub --json name,description,visibility,isPrivate // cek detail repo
 
 
 gh repo create my-repo --public --source=. --remote=origin
