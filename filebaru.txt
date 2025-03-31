@@ -1,7 +1,7 @@
 ECHO is on.
 Hello Word;
 
-<3 fromPimpi
+fromPimpi
 
 // membuat dan mengedit repo git langsung via cmd
 0. gh auth login // login ke github
