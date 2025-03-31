@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write  # Kasih izin buat tulis ke repo (push branch)
+
 jobs:
   create-branch:
     runs-on: ubuntu-latest
@@ -19,7 +22,7 @@ jobs:
           # Ambil hash commit sebelumnya
           PREV_COMMIT=$(git rev-parse HEAD^)
           # Bikin nama branch unik pake timestamp
-          BRANCH_NAME="old-$(date +%Y%m%d-%H%M%S)"
+          BRANCH_NAME="lama-$(date +%Y%m%d-%H%M%S)"
           # Bikin branch baru dari commit sebelumnya
           git checkout -b $BRANCH_NAME $PREV_COMMIT
           # Push ke GitHub
