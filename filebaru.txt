@@ -1,0 +1,28 @@
+ECHO is on.
+Hello Word;
+
+<3 fromPimpi
+
+// membuat dan mengedit repo git langsung via cmd
+0. gh auth login // login ke github
+1. buka folder project anda, anda bisa mkdir jika belum ada kemudian masuk via cd \namafodlder\namafolderproject
+1.1. gh repo create my-repo --public --source=. --remote=origin
+2. git init // membuat folder .git menandakan repo sudah dibuat
+3. buat file baru dengan echo > namafile.txt, kalo mau cek pake dir
+4. notepad namafile.txt // edit pake notepad
+5. type namafile.txt // melihat isi file
+6. git add namafile.txt // tambah file ke staging
+7. git commit -m "pesan anda" // commit perubahan. -m -> message
+8. git push origin main // push file ke github
+
+
+
+gh repo create my-repo --public --source=. --remote=origin
+1. gh: // Ini adalah perintah utama dari GitHub CLI (Command Line Interface). Kalau kamu sudah install gh dan login (gh auth login), kamu bisa pakai ini untuk interaksi sama GitHub dari terminal.
+2. repo create: //Subcommand dari gh yang spesifik buat bikin repository baru di akun GitHub kamu. Jadi, ini kayak klik "New Repository" di web, tapi via CMD.
+3. my-repo: //Nama repository yang akan dibuat di GitHub. Dalam kasus ini, repo kamu bakal jadi https://github.com/<username>/my-repo. Ganti my-repo sesuai nama yang kamu mau.
+4. --public: //Flag (opsi) yang menentukan repo ini bakal bersifat publik, artinya siapa saja bisa lihat. Kalau mau private, ganti jadi --private. Ini wajib pilih salah satu (public/private), kalau enggak, gh bakal nanya interaktif.
+5. --source=.: //Ini bilang ke gh bahwa folder tempat kamu jalankan command ini (ditandai . yang artinya "current directory") adalah sumbernya. Jadi, folder lokal kamu langsung jadi dasar repo Git-nya. Kalau folder ini belum ada .git, nanti gh otomatis bikin git init buat kamu.
+6. --remote=origin: //Nah, ini bagian yang kamu tanyain. Flag ini nyuruh gh buat bikin remote connection ke repo GitHub yang baru dibuat, dan kasih nama remote-nya origin.
+//  Apa itu remote? Remote adalah link ke repo di server (GitHub). Biasanya nama default-nya origin, kayak kalau kamu manual bikin git remote add origin <url>.
+// Jadi, --remote=origin artinya: "Hubungkan repo lokal ini ke GitHub, dan panggil remote-nya origin". Kalau enggak pake flag ini, gh enggak otomatis set remote, dan kamu harus tambah manual pake git remote add.
