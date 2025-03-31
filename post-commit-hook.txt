@@ -1,0 +1,74 @@
+Post-commit hook untuk project profesional yang aku buat. Script ini mengikuti workflow yang lebih standar di industri:
+
+```bash
+cd /dir/git
+echo -e '#!/bin/sh\n
+# Ini adalah post-commit hook untuk workflow yang lebih profesional
+# Script akan otomatis:
+# 1. Membuat branch baru untuk commit yang baru dibuat
+# 2. Push branch baru tersebut ke remote repository
+# 3. Kembali ke branch sebelumnya
+
+# Simpan nama branch saat ini sebelum melakukan perubahan
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# Ambil commit yang baru dibuat
+COMMIT_HASH=$(git rev-parse HEAD)
+
+# Generate nama branch berdasarkan tanggal dan waktu
+BRANCH_NAME="feature-$(date +%Y%m%d-%H%M%S)"
+
+# Buat branch baru untuk commit yang baru dibuat
+git branch $BRANCH_NAME $COMMIT_HASH
+
+# Push branch baru ke remote
+git push -u origin $BRANCH_NAME
+
+# Pesan konfirmasi
+echo "✅ Commit baru berhasil dibuat di branch '"$BRANCH_NAME"' dan di-push ke remote"
+echo "👉 Untuk membuat Pull Request, kunjungi: https://github.com/USERNAME/REPO/pull/new/"$BRANCH_NAME
+echo "⚠️ CATATAN: Branch '"$CURRENT_BRANCH"' masih berisi commit baru. Gunakan '"'git reset --hard HEAD^'"' jika ingin mengembalikan ke kondisi sebelumnya."
+' > .git/hooks/post-commit
+
+# Fix line endings
+tr -d '\r' < .git/hooks/post-commit > .git/hooks/temp
+mv .git/hooks/temp .git/hooks/post-commit
+```
+
+Cara kerjanya:
+
+Setiap kali kamu commit, script akan:
+
+Mengambil commit yang baru saja dibuat
+Membuat branch baru (format: feature-YYYYMMDD-HHMMSS) yang menunjuk ke commit tersebut
+Push branch baru ke GitHub
+Memberikan pesan cara membuat Pull Request
+
+Keunggulan workflow ini:
+
+Setiap perubahan otomatis punya branch terpisah
+Commit tidak langsung masuk ke main
+Mendukung proses code review lewat Pull Request
+Mempertahankan history yang bersih
+
+Cara test:
+
+```bash
+# Buat perubahan
+echo "Test professional workflow $(date)" > test-pro.txt
+
+# Add dan commit
+git add test-pro.txt
+git commit -m "Implement new feature XYZ"
+```
+
+Setelah commit, kamu akan mendapatkan link untuk membuat Pull Request. Di project nyata, kamu bisa:
+
+Klik link tersebut
+Isi deskripsi PR
+Minta review dari tim
+Merge setelah approval
+
+Script ini lebih sesuai dengan best practice di industri dan memungkinkan untuk workflow yang lebih kolaboratif dan terstruktur.
+
+create with claude
