@@ -1,0 +1,26 @@
+name: Create Branch for Old Commit
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout kode
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ambil semua riwayat
+
+      - name: Buat branch baru dari commit lama
+        run: |
+          # Ambil hash commit sebelumnya
+          PREV_COMMIT=$(git rev-parse HEAD^)
+          # Bikin nama branch unik pake timestamp
+          BRANCH_NAME="old-$(date +%Y%m%d-%H%M%S)"
+          # Bikin branch baru dari commit sebelumnya
+          git checkout -b $BRANCH_NAME $PREV_COMMIT
+          # Push ke GitHub
+          git push origin $BRANCH_NAME
